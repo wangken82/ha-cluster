@@ -1,6 +1,6 @@
 #create avset nfs, and 2 new VMS nfs0/1 each with 2 data luns
 resource "azurerm_availability_set" "nfs" {
-  name                = "nfs"
+  name                = "nfs-avSet"
   location            = azurerm_resource_group.myrg.location
   resource_group_name = azurerm_resource_group.myrg.name
   platform_fault_domain_count = "2"
@@ -8,7 +8,7 @@ resource "azurerm_availability_set" "nfs" {
 
 # Create network interfaces
 resource "azurerm_network_interface" "nfs-0" {
-    name                      = "nfs-0"
+    name                      = "nfs-0-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -21,7 +21,7 @@ resource "azurerm_network_interface" "nfs-0" {
     }
 }
 resource "azurerm_network_interface" "nfs-1" {
-    name                      = "nfs-1"
+    name                      = "nfs-1-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -53,7 +53,7 @@ resource "azurerm_linux_virtual_machine" "nfs-0" {
     size                  = "Standard_DS2_v2"
 
     os_disk {
-        name              = "nfs-0"
+        name              = "nfs-0-osdisk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
         disk_size_gb      = "100"
@@ -115,7 +115,7 @@ resource "azurerm_linux_virtual_machine" "nfs-1" {
     size                  = "Standard_DS2_v2"
 
     os_disk {
-        name              = "nfs-1"
+        name              = "nfs-1-osdisk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
         disk_size_gb      = "100"

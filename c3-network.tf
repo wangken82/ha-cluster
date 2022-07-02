@@ -22,7 +22,7 @@ resource "azurerm_subnet" "mysubnet" {
 
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "ssh" {
-    name                = "ssh"
+    name                = "ssh-sg"
     location            = var.region
     resource_group_name = azurerm_resource_group.myrg.name
 

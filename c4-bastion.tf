@@ -1,6 +1,6 @@
 # Create public IPs
 resource "azurerm_public_ip" "bastion" {
-    name                         = "bastion"
+    name                         = "bastion-public-ip"
     location                     = var.region
     resource_group_name          = azurerm_resource_group.myrg.name
     allocation_method            = "Dynamic"
@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "bastion" {
 
 # Create network interface
 resource "azurerm_network_interface" "bastion" {
-    name                      = "bastion"
+    name                      = "bastion-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -44,7 +44,7 @@ resource "azurerm_linux_virtual_machine" "bastion" {
     size                  = "Standard_D2s_v3"
 
     os_disk {
-        name              = "bastion"
+        name              = "bastion-os-disk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
         #disk_size_gb      = "128"

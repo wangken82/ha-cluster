@@ -1,6 +1,6 @@
 # Create network interfaces
 resource "azurerm_network_interface" "sbd0" {
-    name                      = "sbd0"
+    name                      = "sbd0-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "sbd0" {
     }
 }
 resource "azurerm_network_interface" "sbd1" {
-    name                      = "sbd1"
+    name                      = "sbd1-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -26,7 +26,7 @@ resource "azurerm_network_interface" "sbd1" {
     }
 }
 resource "azurerm_network_interface" "sbd2" {
-    name                      = "sbd2"
+    name                      = "sbd2-nic"
     location                  = var.region
     resource_group_name       = azurerm_resource_group.myrg.name
 
@@ -62,7 +62,7 @@ resource "azurerm_linux_virtual_machine" "sbd0" {
     size                  = "Standard_DS1_v2"
 
     os_disk {
-        name              = "sbd0"
+        name              = "sbd0-osdisk"
         caching           = "ReadWrite"
         #disk_size_gb      = "128"
         storage_account_type = "Premium_LRS"
@@ -92,7 +92,7 @@ resource "azurerm_linux_virtual_machine" "sbd1" {
     size                  = "Standard_DS1_v2"
 
     os_disk {
-        name              = "sbd1"
+        name              = "sbd1-osdisk"
         caching           = "ReadWrite"
         #disk_size_gb      = "128"
         storage_account_type = "Premium_LRS"
@@ -122,7 +122,7 @@ resource "azurerm_linux_virtual_machine" "sbd2" {
     size                  = "Standard_DS1_v2"
 
     os_disk {
-        name              = "sbd2"
+        name              = "sbd2-osdisk"
         caching           = "ReadWrite"
         #disk_size_gb      = "128"
         storage_account_type = "Premium_LRS"
