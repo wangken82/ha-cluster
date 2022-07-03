@@ -29,3 +29,9 @@ variable "sku" {
 variable "_version" {
   description = "Version of the image used to create VM, underscore added to avoid Terraform error"
 }
+
+variable "cloudshell_public_ip" {
+  description = "This IP added into ssh allow list for bastion VM"
+  type = list(string)
+  default = ["20.231.127.15/32"]
+}

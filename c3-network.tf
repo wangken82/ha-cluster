@@ -34,7 +34,7 @@ resource "azurerm_network_security_group" "ssh" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
-        source_address_prefix      = "*"
+        source_address_prefixes      = var.cloudshell_public_ip
         destination_address_prefix = "*"
     }
 }
