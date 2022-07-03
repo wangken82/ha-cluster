@@ -16,7 +16,7 @@
     register: cloudshell_public_ip
   - name: output
     debug: msg="my cloudshell public ip is {{ ipify_public_ip }}"
-  - name: Terraform apply -var='cloudshell_public_ip=["{{cloudshell_public_ip}}/32"]
+  - name: Terraform apply -var='cloudshell_public_ip=["{{ipify_public_ip}}/32"]
     terraform:
       lock: no
       force_init: true
