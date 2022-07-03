@@ -12,8 +12,8 @@
   - name: Get my public IP
     ipify_facts:
       timeout: 20
-      delegate_to: localhost
-      register: cloudshell_public_ip
+    delegate_to: localhost
+    register: cloudshell_public_ip
   - name: output
     debug: msg="my cloudshell public ip is {{ ipify_public_ip }}"
   - name: Terraform apply -var='cloudshell_public_ip=["{{cloudshell_public_ip}}/32"]
