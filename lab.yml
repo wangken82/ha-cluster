@@ -69,9 +69,10 @@
   debugger: on_failed
   remote_user: azureadmin
   tasks:
-  - pause:
-    prompt: "Pause 3 mins to wait all VMs up and running"
-    minutes: 3
+  - name: Waiting VMs up and running
+    pause:
+      prompt: "Pause 3 mins.."
+      minutes: 3
 
   - name: Push SSH config to all VMs
     copy:
