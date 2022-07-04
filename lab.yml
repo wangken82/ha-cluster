@@ -21,7 +21,7 @@
       lock: no
       force_init: true
       variables:
-        cloudshell_public_ip: ["{{ ipify_public_ip }}/32"]
+        cloudshell_public_ip: "[{{ ipify_public_ip }}/32]"
       project_path: './'
       state: present
   - name: Configure local alias
