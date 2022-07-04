@@ -33,6 +33,10 @@
         alias tunnel-0='ssh -L 8080:10.0.0.6:9664 -i ~/.ssh/lab_rsa azureadmin@`terraform output -raw bastion_ip`'
         alias tunnel-1='ssh -L 8080:10.0.0.7:9664 -i ~/.ssh/lab_rsa azureadmin@`terraform output -raw bastion_ip`'
         ANSIBLE_STDOUT_CALLBACK=debug
+  - name: Waiting VMs up and running
+    pause:
+      prompt: "Pause 3 mins.."
+      minutes: 3
   - name: Terraform refresh
     shell: terraform refresh ; . ~/.bashrc
 
@@ -69,11 +73,6 @@
   debugger: on_failed
   remote_user: azureadmin
   tasks:
-  - name: Waiting VMs up and running
-    pause:
-      prompt: "Pause 3 mins.."
-      minutes: 3
-
   - name: Push SSH config to all VMs
     copy:
       src: ssh.config/ssh.config
