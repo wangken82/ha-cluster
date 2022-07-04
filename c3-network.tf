@@ -27,14 +27,14 @@ resource "azurerm_network_security_group" "ssh" {
     resource_group_name = azurerm_resource_group.myrg.name
 
     security_rule {
-        name                       = "SSH"
+        name                       = "SSH for cloudshell"
         priority                   = 101
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
-        source_address_prefixes      = var.cloudshell_public_ip
+        source_address_prefixes      = ["${var.cloudshell_public_ip}/32"]
         destination_address_prefix = "*"
     }
 }

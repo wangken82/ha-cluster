@@ -32,6 +32,6 @@ variable "_version" {
 
 variable "cloudshell_public_ip" {
   description = "This IP added into ssh allow list for bastion VM"
-  type = list(string)
-  default = ["12.23.56.78/32"]
+  type = string
+  default = "12.34.56.78"
 }
