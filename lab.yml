@@ -13,7 +13,6 @@
     ipify_facts:
       timeout: 20
     delegate_to: localhost
-    register: cloudshell_public_ip
   - name: output cloudshell public_ip
     debug: msg="my cloudshell public ip is {{ ipify_public_ip }}"
   - name: Terraform apply
