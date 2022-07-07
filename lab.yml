@@ -36,8 +36,8 @@
     pause:
       prompt: "Pause 1 mins.."
       minutes: 1
-  - name: Refresh bash setting
-    shell: . ~/.bashrc
+  - name: Get bastion ip
+    shell: terraform refresh; . ~/.bashrc
 
 - name: Push SSH key to bastion
   hosts: bastion
