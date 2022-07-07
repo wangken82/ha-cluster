@@ -34,10 +34,10 @@
         ANSIBLE_STDOUT_CALLBACK=debug
   - name: Waiting VMs up and running
     pause:
-      prompt: "Pause 3 mins.."
-      minutes: 3
-  - name: Terraform refresh
-    shell: terraform refresh ; . ~/.bashrc
+      prompt: "Pause 1 mins.."
+      minutes: 1
+  - name: Refresh bash setting
+    shell: . ~/.bashrc
 
 - name: Push SSH key to bastion
   hosts: bastion

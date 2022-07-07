@@ -47,7 +47,6 @@ resource "azurerm_linux_virtual_machine" "bastion" {
         name              = "bastion-os-disk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
-        #disk_size_gb      = "128"
     }
 
     source_image_reference {
@@ -59,7 +58,6 @@ resource "azurerm_linux_virtual_machine" "bastion" {
 
     computer_name  = "bastion"
     admin_username = "azureadmin"
-    #custom_data    = file("<path/to/file>")
 
     admin_ssh_key {
         username       = "azureadmin"
