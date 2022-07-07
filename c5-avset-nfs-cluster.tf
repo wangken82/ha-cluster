@@ -46,7 +46,7 @@ resource "azurerm_network_interface_security_group_association" "nfs-1" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "nfs-0" {
-    name                  = "nfs-0"
+    name                  = "nfs-0-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.nfs-0.id]
@@ -69,7 +69,6 @@ resource "azurerm_linux_virtual_machine" "nfs-0" {
     computer_name  = "nfs-0"
     availability_set_id = azurerm_availability_set.nfs.id
     admin_username = "azureadmin"
-#    custom_data    = file("<path/to/file>")
 
     admin_ssh_key {
         username       = "azureadmin"
@@ -108,7 +107,7 @@ resource "azurerm_virtual_machine_data_disk_attachment" "nfs-0b" {
 }
 
 resource "azurerm_linux_virtual_machine" "nfs-1" {
-    name                  = "nfs-1"
+    name                  = "nfs-1-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.nfs-1.id]
@@ -131,7 +130,6 @@ resource "azurerm_linux_virtual_machine" "nfs-1" {
     computer_name  = "nfs-1"
     availability_set_id = azurerm_availability_set.nfs.id
     admin_username = "azureadmin"
-#    custom_data    = file("<path/to/file>")
 
     admin_ssh_key {
         username       = "azureadmin"

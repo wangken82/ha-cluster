@@ -37,7 +37,7 @@ resource "azurerm_network_interface_security_group_association" "example" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "bastion" {
-    name                  = "bastion"
+    name                  = "bastion-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.bastion.id]

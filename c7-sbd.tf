@@ -55,7 +55,7 @@ resource "azurerm_network_interface_security_group_association" "sbd2" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "sbd0" {
-    name                  = "sbd0"
+    name                  = "sbd0-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.sbd0.id]
@@ -85,7 +85,7 @@ resource "azurerm_linux_virtual_machine" "sbd0" {
     }
 }
 resource "azurerm_linux_virtual_machine" "sbd1" {
-    name                  = "sbd1"
+    name                  = "sbd1-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.sbd1.id]
@@ -115,7 +115,7 @@ resource "azurerm_linux_virtual_machine" "sbd1" {
     }
 }
 resource "azurerm_linux_virtual_machine" "sbd2" {
-    name                  = "sbd2"
+    name                  = "sbd2-vm"
     location              = var.region
     resource_group_name   = azurerm_resource_group.myrg.name
     network_interface_ids = [azurerm_network_interface.sbd2.id]

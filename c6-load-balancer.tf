@@ -1,5 +1,5 @@
 resource "azurerm_lb" "lb" {
-  name                = "TestLoadBalancer"
+  name                = "nfs-LoadBalancer"
   location            = var.region
   resource_group_name = azurerm_resource_group.myrg.name
 #  sku                 = "Standard"
