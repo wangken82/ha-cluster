@@ -374,6 +374,12 @@
       creates: /etc/delete.to.retry.drdb.cluster2.config.sh
   - name: Disable maintenance mode
     command: sudo crm configure property maintenance-mode=false
+  - name: Cleanup Cluster and split nfs services on different nodes
+    command: "{{ item }}"
+    with_items:
+      - sudo crm resource cleanup g-NW1_nfs
+      - sudo crm resource cleanup g-NW2_nfs
+      - sudo crm resource move g-NW2_nfs nfs-1
 
 - name: Configure exporter on NFS nodes
   hosts: nfs
