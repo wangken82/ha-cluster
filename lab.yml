@@ -175,10 +175,14 @@
     args:
       executable: python
       creates: /etc/delete.to.retry.nfs.sbd.config.py
+  
   - name: Create the softdog configuration file
-    copy:
-      src: nfs.config/nfs.softdog.config
-      dest: /etc/modules-load.d/softdog.conf   
+    lineinfile:
+      dest: /etc/modules-load.d/softdog.conf
+      line: "softdog"
+      state: present
+      create: true 
+
   - name: Load softdog module
     command: sudo modprobe -v softdog
 #  - name: Zypper update

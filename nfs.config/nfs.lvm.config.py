@@ -14,7 +14,7 @@ for i in vol.split():
   if "part" in i:
     subprocess.check_output(['pvcreate', '/dev/disk/azure/scsi1/' + i,])
     subprocess.check_output(['vgcreate', 'vg-NW' + str(a) + '-NFS', '/dev/disk/azure/scsi1/' + i,])
-    subprocess.check_output(['lvcreate', '-l', '100%FREE', '-n', 'NW' + str(a), 'vg-NW' + str(a) + '-NFS'])
+    subprocess.check_output(['lvcreate', '-l', '40%FREE', '-n', 'NW' + str(a), 'vg-NW' + str(a) + '-NFS'])
     a += 1
 g = open("/etc/delete.to.retry.nfs.lvm.config.py", "w")
 g.close()

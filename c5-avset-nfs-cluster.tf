@@ -56,7 +56,7 @@ resource "azurerm_linux_virtual_machine" "nfs-0" {
         name              = "nfs-0-osdisk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
-        disk_size_gb      = "100"
+        disk_size_gb      = "32"
     }
 
     source_image_reference {
@@ -82,7 +82,7 @@ resource "azurerm_managed_disk" "nfs-0a" {
   resource_group_name  = azurerm_resource_group.myrg.name
   storage_account_type = "Premium_LRS"
   create_option        = "Empty"
-  disk_size_gb         = 100
+  disk_size_gb         = 50
 }
 resource "azurerm_virtual_machine_data_disk_attachment" "nfs-0a" {
   managed_disk_id    = azurerm_managed_disk.nfs-0a.id
@@ -97,7 +97,7 @@ resource "azurerm_managed_disk" "nfs-0b" {
   resource_group_name  = azurerm_resource_group.myrg.name
   storage_account_type = "Premium_LRS"
   create_option        = "Empty"
-  disk_size_gb         = 100
+  disk_size_gb         = 50
 }
 resource "azurerm_virtual_machine_data_disk_attachment" "nfs-0b" {
   managed_disk_id    = azurerm_managed_disk.nfs-0b.id
@@ -117,7 +117,7 @@ resource "azurerm_linux_virtual_machine" "nfs-1" {
         name              = "nfs-1-osdisk"
         caching           = "ReadWrite"
         storage_account_type = "Premium_LRS"
-        disk_size_gb      = "100"
+        disk_size_gb      = "32"
     }
 
     source_image_reference {
@@ -143,7 +143,7 @@ resource "azurerm_managed_disk" "nfs-1a" {
   resource_group_name  = azurerm_resource_group.myrg.name
   storage_account_type = "Premium_LRS"
   create_option        = "Empty"
-  disk_size_gb         = 100
+  disk_size_gb         = 50
 }
 resource "azurerm_virtual_machine_data_disk_attachment" "nfs-1a" {
   managed_disk_id    = azurerm_managed_disk.nfs-1a.id
@@ -158,7 +158,7 @@ resource "azurerm_managed_disk" "nfs-1b" {
   resource_group_name  = azurerm_resource_group.myrg.name
   storage_account_type = "Premium_LRS"
   create_option        = "Empty"
-  disk_size_gb         = 100
+  disk_size_gb         = 50
 }
 resource "azurerm_virtual_machine_data_disk_attachment" "nfs-1b" {
   managed_disk_id    = azurerm_managed_disk.nfs-1b.id
