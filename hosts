@@ -9,7 +9,6 @@ bastion-node ansible_host=10.0.0.100
 [sbd]
 sbd-node0 ansible_host=10.0.0.17 
 
-
 [nfs]
 nfs-node0 ansible_host=10.0.0.6 initiator_config=node0.initiator.config
 nfs-node1 ansible_host=10.0.0.7 initiator_config=node1.initiator.config

@@ -195,22 +195,21 @@
     zypper:
       name: resource-agents
       state: present
-  - name: Configure systemd
-    copy:
-      src: nfs.config/nfs.systemd.config
+  - name: Configure systemd Task Max value
+    lineinfile:
       dest: /etc/systemd/system.conf
-      owner: root
-      group: root  
-      mode: '0644'
+      line: "DefaultTasksMax=4096"
+      state: present 
+  
   - name: Reload daemon-reload
     command: sudo systemctl daemon-reload 
   - name: Configure systemd
-    copy:
-      src: nfs.config/nfs.sysctl.config
-      dest: /etc/sysctl.conf
-      owner: root
-      group: root  
-      mode: '0644'
+    blockinfile:
+      path: /etc/sysctl.conf
+      block: |
+        vm.dirty_bytes = 629145600
+        vm.dirty_background_bytes = 314572800
+
   - name: Configure interface
     run_once: true
     copy:
@@ -318,9 +317,10 @@
       path: /srv/nfs/
       state: directory
   - name: Create the root NFS export entry
-    copy:
-      src: nfs.config/nfs.exports.config
+    lineinfile:
       dest: /etc/exports
+      line: "/srv/nfs/ *(rw,no_root_squash,fsid=0)"
+      state: present 
   - name: Install drbd
     zypper:
       name: drbd
