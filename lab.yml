@@ -34,8 +34,8 @@
         ANSIBLE_STDOUT_CALLBACK=debug
   - name: Waiting VMs up and running
     pause:
-      prompt: "Pause 1 mins.."
-      minutes: 1
+      prompt: "Pause 20 seconds.."
+      seconds: 20
   - name: Get bastion ip
     shell: terraform refresh; . ~/.bashrc
 
